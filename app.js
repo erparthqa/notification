@@ -26,7 +26,8 @@
 messaging.onMessage(function(payload){
 console.log('onMessage: ',payload);
   $('#demo-center').html('<div class="mbsc-align-center mbsc-padding"><img src="https://img.mobiscroll.com/demos/logo-noshadow.jpg"><h4>Welcome on our website!</h4><p>Have fun navigating through the demos.</p></div>');
-      centerDemo.show();
+  alert(payload.data.call);    
+  //centerDemo.show();
       $('#demo-center').show();
       return false;
 });
