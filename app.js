@@ -26,4 +26,5 @@
 
 messaging.onMessage(function(payload){
 console.log('onMessage: ',payload);
+  alert(payload.data.call);
 });
