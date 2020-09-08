@@ -15,37 +15,15 @@
       <!-- Add Firebase products that you want to use -->
       <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-auth.js"></script>
       <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-firestore.js"></script>
+    <link rel="stylesheet" href="mobiscroll.jquery.min.css">
+    <script src="mobiscroll.jquery.min.js"></script>
     <script src="app.js"></script>
 </head>
 <body>
     My firebase app
     <button mbsc-button id="show-center">Try center display mode</button>
-    <script>
-
-    mobiscroll.settings = {
-        
-        lang: 'en',               // Specify language like: lang: 'pl' or omit setting to use default
-        theme: 'ios',                       // Specify theme like: theme: 'ios' or omit setting to use default
-            themeVariant: 'light'           // More info about themeVariant: https://docs.mobiscroll.com/4-10-6/popup#opt-themeVariant
-    };
     
-    $(function () {
+    <div id="demo-center" class="mbsc-cloak"></div>
     
-        var centerDemo = $('#demo-center').mobiscroll().popup({
-                display: 'center',          // Specify display mode like: display: 'bottom' or omit setting to use default
-                buttons: [{                 // More info about buttons: https://docs.mobiscroll.com/4-10-6/popup#opt-buttons
-                        text: 'Ok',
-                        handler: 'set'
-                    },
-                    'cancel'
-                ],
-            }).mobiscroll('getInst');
-    
-        $('#show-center').click(function () {
-            centerDemo.show();
-            return false;
-        });
-    });
-</script>
 </body>
 </html>
