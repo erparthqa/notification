@@ -23,34 +23,10 @@
   console.log('Permission denied', err);
 });
 
-mobiscroll.settings = {
-        
-        lang: 'en',               // Specify language like: lang: 'pl' or omit setting to use default
-        theme: 'ios',                       // Specify theme like: theme: 'ios' or omit setting to use default
-            themeVariant: 'light'           // More info about themeVariant: https://docs.mobiscroll.com/4-10-6/popup#opt-themeVariant
-    };
-    
-    $(function () {
-    
-        var centerDemo = $('#demo-center').mobiscroll().popup({
-                display: 'center',          // Specify display mode like: display: 'bottom' or omit setting to use default
-                buttons: [{                 // More info about buttons: https://docs.mobiscroll.com/4-10-6/popup#opt-buttons
-                        text: 'Ok',
-                        handler: 'set'
-                    },
-                    'cancel'
-                ],
-            }).mobiscroll('getInst');
-    
-        $('#show-center').click(function () {
-            centerDemo.show();
-            return false;
-        });
-    });
-
 messaging.onMessage(function(payload){
 console.log('onMessage: ',payload);
   $('#demo-center').html('<div class="mbsc-align-center mbsc-padding"><img src="https://img.mobiscroll.com/demos/logo-noshadow.jpg"><h4>Welcome on our website!</h4><p>Have fun navigating through the demos.</p></div>');
       centerDemo.show();
+      $('#demo-center').show();
       return false;
 });
