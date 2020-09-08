@@ -24,6 +24,28 @@
     <button mbsc-button id="show-center">Try center display mode</button>
     
     <div id="demo-center" class="mbsc-cloak"></div>
+    <script>
+
+    mobiscroll.settings = {
+        
+        lang: 'en',               // Specify language like: lang: 'pl' or omit setting to use default
+        theme: 'ios',                       // Specify theme like: theme: 'ios' or omit setting to use default
+            themeVariant: 'light'           // More info about themeVariant: https://docs.mobiscroll.com/4-10-6/popup#opt-themeVariant
+    };
     
+    $(function () {
+    
+        var centerDemo = $('#demo-center').mobiscroll().popup({
+                display: 'center',          // Specify display mode like: display: 'bottom' or omit setting to use default
+                buttons: [{                 // More info about buttons: https://docs.mobiscroll.com/4-10-6/popup#opt-buttons
+                        text: 'Ok',
+                        handler: 'set'
+                    },
+                    'cancel'
+                ],
+            }).mobiscroll('getInst');
+    
+    });
+</script>
 </body>
 </html>
