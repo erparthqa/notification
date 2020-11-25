@@ -62,22 +62,36 @@ const load = () => {
     // audio.loop = true;
     // audio.volume = 1.0;
 
-    var audio = new Audio();
-    audio.src= source;
-    // when the sound has been loaded, execute your code
-    audio.oncanplaythrough = (event) => {
-        var playedPromise = audio.play();
-        if (playedPromise) {
-            playedPromise.catch((e) => {
-                console.log("error ::" + e)
-                if (e.name === 'NotAllowedError' || e.name === 'NotSupportedError') {
-                    console.log(e.name);
-                }
-            }).then(() => {
-                document.getElementById('music').muted = false;
-                document.querySelector('#music').play();
-            });
-        }
+    // var audio = new Audio();
+    // audio.src= source;
+    // // when the sound has been loaded, execute your code
+    // audio.oncanplaythrough = (event) => {
+    //     var playedPromise = audio.play();
+    //     if (playedPromise) {
+    //         playedPromise.catch((e) => {
+    //             console.log("error ::" + e)
+    //             if (e.name === 'NotAllowedError' || e.name === 'NotSupportedError') {
+    //                 console.log(e.name);
+    //             }
+    //         }).then(() => {
+    //             document.getElementById('music').muted = false;
+    //             document.querySelector('#music').play();
+    //         });
+    //     }
+    // }
+
+    var promise = document.querySelector('audio').play();
+
+    if (promise !== undefined) {
+        promise.then(_ => {
+            audio.muted = false;
+            audio.play();
+            // Autoplay started!
+        }).catch(error => {
+            console.log(error);
+            // Autoplay was prevented.
+            // Show a "Play" button so that user can start playback.
+        });
     }
 
     // function startPlayback() {
