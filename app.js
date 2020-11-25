@@ -30,6 +30,7 @@ console.log('onMessage: ',payload);
 
   // WAVE SOUND TOGGLE
   var source = "https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3";
+  $.playSound(source);
     playSound(source);
   var audio = new Audio(); // use the constructor in JavaScript, just easier that way
   audio.addEventListener("load", function() {
