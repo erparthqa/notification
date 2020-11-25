@@ -64,7 +64,7 @@ const load = () => {
 
     function startPlayback() {
         document.getElementById('music').muted = false;
-        return document.querySelector('#music').play();
+        document.querySelector('#music').play();
     }
 
     startPlayback().then(function () {
