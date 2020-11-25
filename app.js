@@ -52,7 +52,7 @@ audio.volume = 1.0;
 
 messaging.onMessage(function (payload) {
     console.log('onMessage: ', payload);
-    startPlayback();
+    // startPlayback();
     //$('#demo-center').html('<div class="mbsc-align-center mbsc-padding"><img src="https://img.mobiscroll.com/demos/logo-noshadow.jpg"><h4>Welcome on our website!</h4><p>Have fun navigating through the demos.</p></div>');
     //alert(payload.data.call);
 //   $('#ringme').click();
