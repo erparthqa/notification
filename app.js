@@ -52,7 +52,7 @@ const load = () => {
         console.log('Permission denied', err);
     });
 
-    // const source = "https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3";
+    const source = "https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3";
     // const audio = new Audio(); // use the constructor in JavaScript, just easier that way
     // audio.addEventListener("load", function() {
     //     audio.play();
