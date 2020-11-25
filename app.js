@@ -52,15 +52,15 @@ const load = () => {
         console.log('Permission denied', err);
     });
 
-    const source = "https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3";
-    const audio = new Audio(); // use the constructor in JavaScript, just easier that way
-    audio.addEventListener("load", function() {
-        audio.play();
-    }, true);
-    audio.src = source;
-    audio.autoplay = true;
-    audio.loop = true;
-    audio.volume = 1.0;
+    // const source = "https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3";
+    // const audio = new Audio(); // use the constructor in JavaScript, just easier that way
+    // audio.addEventListener("load", function() {
+    //     audio.play();
+    // }, true);
+    // audio.src = source;
+    // audio.autoplay = true;
+    // audio.loop = true;
+    // audio.volume = 1.0;
 
     var audio = new Audio();
     audio.src= source;
@@ -101,17 +101,17 @@ const load = () => {
         //$('#demo-center').html('<div class="mbsc-align-center mbsc-padding"><img src="https://img.mobiscroll.com/demos/logo-noshadow.jpg"><h4>Welcome on our website!</h4><p>Have fun navigating through the demos.</p></div>');
 
         // WAVE SOUND TOGGLE
-        $('.audio').click();
-        let playing = true;
-        $('.audio').on('click', function(e) {
-            if (playing == false) {
-                audio.play();
-                playing = true;
-            } else {
-                audio.pause();
-                playing = false;
-            }
-        });
+        // $('.audio').click();
+        // let playing = true;
+        // $('.audio').on('click', function(e) {
+        //     if (playing == false) {
+        //         audio.play();
+        //         playing = true;
+        //     } else {
+        //         audio.pause();
+        //         playing = false;
+        //     }
+        // });
 
 //       $('#demo-center').show();
 //       return false;
