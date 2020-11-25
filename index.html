@@ -21,16 +21,44 @@
 </head>
 <body id="myButton">
 <div id="myHeading">
-My firebase app
-<button id="show-center" mbsc-button>Try center display mode</button>
+    My firebase app
+    <button id="show-center" mbsc-button>Try center display mode</button>
 
-<audio id="music" src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3"></audio>
-<button hidden id="play">Play</button>
+    <audio id="music" src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3"></audio>
+    <button hidden id="play">Play</button>
 
-<div class="mbsc-cloak" id="demo-center"></div>
+    <div class="mbsc-cloak" id="demo-center"></div>
+
+    <audio id="MyAudioElement" autoplay>
+        <source src="https://www.w3schools.com/html/horse.ogg" type="audio/ogg">
+        <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 </div>
 <script>
+    const load = () => {
+    Audio.prototype.play = (function(play) {
+        return function () {
+            var audio = this,
+                args = arguments,
+                promise = play.apply(audio, args);
+            if (promise !== undefined) {
+                promise.catch(_ => {
+                    // Autoplay was prevented. This is optional, but add a button to start playing.
+                    var el = document.createElement("button");
+                    el.innerHTML = "Play";
+                    el.addEventListener("click", function(){play.apply(audio, args);});
+                    this.parentNode.insertBefore(el, this.nextSibling)
+                });
+            }
+        };
+    })(Audio.prototype.play);
 
+    // Try automatically playing our audio via script. This would normally trigger and error.
+    document.getElementById('MyAudioElement').play()
+
+    }
+    window.onload = load;
     // const load = () => {
     //
     //     // $("body").click();
