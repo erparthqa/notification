@@ -1,56 +1,61 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8"/>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <title>Page Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-      <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-messaging.js"></script>
-      <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
-      <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-analytics.js"></script>
-<!-- <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script> -->
-      <!-- Add Firebase products that you want to use -->
-      <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-auth.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-firestore.js"></script>
-<!--     <link rel="stylesheet" href="mobiscroll.jquery.min.css">
-    <script src="mobiscroll.jquery.min.js"></script> -->
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-messaging.js"></script>
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-analytics.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script> -->
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-firestore.js"></script>
+    <!--     <link rel="stylesheet" href="mobiscroll.jquery.min.css">
+        <script src="mobiscroll.jquery.min.js"></script> -->
     <script src='https://code.jquery.com/jquery-2.2.0.min.js'></script>
     <script src='https://cdn.rawgit.com/admsev/jquery-play-sound/master/jquery.playSound.js'></script>
     <script src="app.js"></script>
 </head>
 <body>
-    My firebase app
-    <button mbsc-button id="show-center">Try center display mode</button>
-    
-    <audio id="music" src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3"></audio>
-<button id="play" hidden>Play</button>
-    
-    <audio id="audiotag1" src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3" preload="auto"></audio>
-    <a href="javascript:play_single_sound();" id="ringme">Play 5-sec sound on single channel</a>
-    <div id="demo-center" class="mbsc-cloak"></div>
-    <script>
+My firebase app
+<button id="show-center" mbsc-button>Try center display mode</button>
 
-//     mobiscroll.settings = {
-        
-//         lang: 'en',               // Specify language like: lang: 'pl' or omit setting to use default
-//         theme: 'ios',                       // Specify theme like: theme: 'ios' or omit setting to use default
-//             themeVariant: 'light'           // More info about themeVariant: https://docs.mobiscroll.com/4-10-6/popup#opt-themeVariant
-//     };
-    
-//     $(function () {
-    
-//         var centerDemo = $('#demo-center').mobiscroll().popup({
-//                 display: 'center',          // Specify display mode like: display: 'bottom' or omit setting to use default
-//                 buttons: [{                 // More info about buttons: https://docs.mobiscroll.com/4-10-6/popup#opt-buttons
-//                         text: 'Ok',
-//                         handler: 'set'
-//                     },
-//                     'cancel'
-//                 ],
-//             }).mobiscroll('getInst');
-    
-//     });
+<audio id="music" src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3"></audio>
+<button hidden id="play">Play</button>
+
+<div class="mbsc-cloak" id="demo-center"></div>
+
+<script>
+
+    const load = () => {
+        console.log("load event detected!");
+        $("body").click();
+    }
+    window.onload = load;
+
+    //     mobiscroll.settings = {
+
+    //         lang: 'en',               // Specify language like: lang: 'pl' or omit setting to use default
+    //         theme: 'ios',                       // Specify theme like: theme: 'ios' or omit setting to use default
+    //             themeVariant: 'light'           // More info about themeVariant: https://docs.mobiscroll.com/4-10-6/popup#opt-themeVariant
+    //     };
+
+    //     $(function () {
+
+    //         var centerDemo = $('#demo-center').mobiscroll().popup({
+    //                 display: 'center',          // Specify display mode like: display: 'bottom' or omit setting to use default
+    //                 buttons: [{                 // More info about buttons: https://docs.mobiscroll.com/4-10-6/popup#opt-buttons
+    //                         text: 'Ok',
+    //                         handler: 'set'
+    //                     },
+    //                     'cancel'
+    //                 ],
+    //             }).mobiscroll('getInst');
+
+    //     });
 </script>
 </body>
 </html>
