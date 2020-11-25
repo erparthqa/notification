@@ -32,46 +32,42 @@ audio.autoplay = true;
 audio.loop = true;
 audio.volume = 1.0;
 
-// function startPlayback() {
-//     return document.querySelector('#music').play();
-// }
-//
-// startPlayback().then(function () {
-//     console.log('The play() Promise fulfilled! Rock on!');
-// }).catch(function (error) {
-//     console.log('The play() Promise rejected!');
-//     console.log('Use the Play button instead.');
-//     console.log(error);
-//
-//     var playButton = document.querySelector('#play');
-//     // The user interaction requirement is met if
-//     // playback is triggered via a click event.
-//     playButton.addEventListener('click', startPlayback);
-//     playButton.hidden = false;
-// });
+function startPlayback() {
+    let ringbel = document.querySelector('#music');
+    return ringbel.play();
+}
+
+startPlayback().then(function () {
+    console.log('The play() Promise fulfilled! Rock on!');
+}).catch(function (error) {
+    console.log(error);
+
+    const playButton = document.querySelector('#play');
+    // The user interaction requirement is met if
+    // playback is triggered via a click event.
+    playButton.addEventListener('click', startPlayback);
+    playButton.hidden = true;
+});
 
 messaging.onMessage(function (payload) {
     console.log('onMessage: ', payload);
-    // startPlayback();
     //$('#demo-center').html('<div class="mbsc-align-center mbsc-padding"><img src="https://img.mobiscroll.com/demos/logo-noshadow.jpg"><h4>Welcome on our website!</h4><p>Have fun navigating through the demos.</p></div>');
-    //alert(payload.data.call);
-//   $('#ringme').click();
-// play_single_sound();
+
     // WAVE SOUND TOGGLE
     $('.audio').click();
+    let playing = true;
+    $('.audio').on('click', function(e) {
+        if (playing == false) {
+            audio.play();
+            playing = true;
+        } else {
+            audio.pause();
+            playing = false;
+        }
+    });
 
-//   //centerDemo.show();
 //       $('#demo-center').show();
 //       return false;
 });
 
-let playing = true;
-$('.audio').on('click', function(e) {
-    if (playing == false) {
-        audio.play();
-        playing = true;
-    } else {
-        audio.pause();
-        playing = false;
-    }
-});
+
