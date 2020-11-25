@@ -27,15 +27,36 @@ function play_single_sound() {
 		document.getElementById('audiotag1').play();
 	}
 
+function startPlayback() {
+  return document.querySelector('#music').play();
+}
+
+ChromeSamples.log('Attempting to play automatically...');
+
+startPlayback().then(function() {
+  ChromeSamples.log('The play() Promise fulfilled! Rock on!');
+}).catch(function(error) {
+  ChromeSamples.log('The play() Promise rejected!');
+  ChromeSamples.log('Use the Play button instead.');
+  ChromeSamples.log(error);
+
+  var playButton = document.querySelector('#play');
+  // The user interaction requirement is met if
+  // playback is triggered via a click event.
+  playButton.addEventListener('click', startPlayback);
+  playButton.hidden = false;
+});
+
 messaging.onMessage(function(payload){
 console.log('onMessage: ',payload);
+	startPlayback();
   //$('#demo-center').html('<div class="mbsc-align-center mbsc-padding"><img src="https://img.mobiscroll.com/demos/logo-noshadow.jpg"><h4>Welcome on our website!</h4><p>Have fun navigating through the demos.</p></div>');
   //alert(payload.data.call);
 //   $('#ringme').click();
 // play_single_sound();
   // WAVE SOUND TOGGLE
-  var source = "https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3";
-  $.playSound(source);
+//   var source = "https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3";
+//   $.playSound(source);
 //     playSound(source);
 //   var audio = new Audio(); // use the constructor in JavaScript, just easier that way
 //   audio.addEventListener("load", function() {
