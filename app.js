@@ -62,6 +62,23 @@ const load = () => {
     audio.loop = true;
     audio.volume = 1.0;
 
+    var audio = new Audio();
+    audio.src= source;
+    // when the sound has been loaded, execute your code
+    audio.oncanplaythrough = (event) => {
+        var playedPromise = audio.play();
+        if (playedPromise) {
+            playedPromise.catch((e) => {
+                console.log(e)
+                if (e.name === 'NotAllowedError' || e.name === 'NotSupportedError') {
+                    console.log(e.name);
+                }
+            }).then(() => {
+                console.log("playing sound !!!");
+            });
+        }
+    }
+
     function startPlayback() {
         document.getElementById('music').muted = false;
         document.querySelector('#music').play();
