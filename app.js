@@ -32,27 +32,31 @@ audio.autoplay = true;
 audio.loop = true;
 audio.volume = 1.0;
 
-function startPlayback() {
-    let ringbel = document.querySelector('#music');
-    return ringbel.play();
+const load = () => {
+
+    function startPlayback() {
+        let ringbel = document.querySelector('#music');
+        return ringbel.play();
+    }
+
+    startPlayback().then(function () {
+        console.log('The play() Promise fulfilled! Rock on!');
+    }).catch(function (error) {
+        console.log(error);
+
+        const playButton = document.querySelector('#play');
+        // The user interaction requirement is met if
+        // playback is triggered via a click event.
+        playButton.addEventListener('click', startPlayback);
+        playButton.hidden = true;
+    });
 }
-
-startPlayback().then(function () {
-    console.log('The play() Promise fulfilled! Rock on!');
-}).catch(function (error) {
-    console.log(error);
-
-    const playButton = document.querySelector('#play');
-    // The user interaction requirement is met if
-    // playback is triggered via a click event.
-    playButton.addEventListener('click', startPlayback);
-    playButton.hidden = true;
-});
+window.onload = load;
 
 messaging.onMessage(function (payload) {
     console.log('onMessage: ', payload);
     //$('#demo-center').html('<div class="mbsc-align-center mbsc-padding"><img src="https://img.mobiscroll.com/demos/logo-noshadow.jpg"><h4>Welcome on our website!</h4><p>Have fun navigating through the demos.</p></div>');
-
+    
     // WAVE SOUND TOGGLE
     $('.audio').click();
     let playing = true;
