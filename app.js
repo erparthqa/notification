@@ -28,9 +28,7 @@ console.log('onMessage: ',payload);
   //$('#demo-center').html('<div class="mbsc-align-center mbsc-padding"><img src="https://img.mobiscroll.com/demos/logo-noshadow.jpg"><h4>Welcome on our website!</h4><p>Have fun navigating through the demos.</p></div>');
   //alert(payload.data.call); 
   
-  $('<audio id="chatAudio">
-    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3" type="audio/mpeg">
-</audio>').appendTo('body');
+  $('<audio id="chatAudio"><source src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3" type="audio/mpeg"></audio>').appendTo('body');
 
 // play sound
 $('#chatAudio')[0].play();
