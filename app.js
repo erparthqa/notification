@@ -26,7 +26,8 @@ const load = () => {
     })(Audio.prototype.play);
 
     // Try automatically playing our audio via script. This would normally trigger and error.
-    document.getElementById('MyAudioElement').play()
+    document.getElementById('MyAudioElement').muted = false;
+    document.getElementById('MyAudioElement').play();
 
     // Initialize Firebase
     var config = {
@@ -62,8 +63,8 @@ const load = () => {
     audio.volume = 1.0;
 
     function startPlayback() {
-        let ringbel = document.querySelector('#music');
-        return ringbel.play();
+        document.getElementById('music').muted = false;
+        return document.querySelector('#music').play();
     }
 
     startPlayback().then(function () {
