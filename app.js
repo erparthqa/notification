@@ -69,32 +69,33 @@ const load = () => {
         var playedPromise = audio.play();
         if (playedPromise) {
             playedPromise.catch((e) => {
-                console.log(e)
+                console.log("error ::" + e)
                 if (e.name === 'NotAllowedError' || e.name === 'NotSupportedError') {
                     console.log(e.name);
                 }
             }).then(() => {
-                console.log("playing sound !!!");
+                document.getElementById('music').muted = false;
+                document.querySelector('#music').play();
             });
         }
     }
 
-    function startPlayback() {
-        // document.getElementById('music').muted = false;
-        document.querySelector('#music').play();
-    }
-
-    startPlayback().then(function () {
-        console.log('The play() Promise fulfilled! Rock on!');
-    }).catch(function (error) {
-        console.log(error);
-
-        const playButton = document.querySelector('#play');
-        // The user interaction requirement is met if
-        // playback is triggered via a click event.
-        playButton.addEventListener('click', startPlayback);
-        playButton.hidden = true;
-    });
+    // function startPlayback() {
+    //     // document.getElementById('music').muted = false;
+    //     document.querySelector('#music').play();
+    // }
+    //
+    // startPlayback().then(function () {
+    //     console.log('The play() Promise fulfilled! Rock on!');
+    // }).catch(function (error) {
+    //     console.log(error);
+    //
+    //     const playButton = document.querySelector('#play');
+    //     // The user interaction requirement is met if
+    //     // playback is triggered via a click event.
+    //     playButton.addEventListener('click', startPlayback);
+    //     playButton.hidden = true;
+    // });
 
     messaging.onMessage(function (payload) {
         console.log('onMessage: ', payload);
