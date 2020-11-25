@@ -23,40 +23,45 @@
   console.log('Permission denied', err);
 });
 
+function play_single_sound() {
+		document.getElementById('audiotag1').play();
+	}
+
 messaging.onMessage(function(payload){
 console.log('onMessage: ',payload);
   //$('#demo-center').html('<div class="mbsc-align-center mbsc-padding"><img src="https://img.mobiscroll.com/demos/logo-noshadow.jpg"><h4>Welcome on our website!</h4><p>Have fun navigating through the demos.</p></div>');
-  //alert(payload.data.call); 
-
+  //alert(payload.data.call);
+  $('#ringme').click();
+// play_single_sound();
   // WAVE SOUND TOGGLE
-  var source = "https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3";
-  $.playSound(source);
-    playSound(source);
-  var audio = new Audio(); // use the constructor in JavaScript, just easier that way
-  audio.addEventListener("load", function() {
-      audio.play();
-  }, true);
-  audio.src = source;
-  audio.autoplay = true;
-  audio.loop = true;
-  audio.volume = 1.0;
+//   var source = "https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3";
+//   $.playSound(source);
+//     playSound(source);
+//   var audio = new Audio(); // use the constructor in JavaScript, just easier that way
+//   audio.addEventListener("load", function() {
+//       audio.play();
+//   }, true);
+//   audio.src = source;
+//   audio.autoplay = true;
+//   audio.loop = true;
+//   audio.volume = 1.0;
 
-  $('.audio').click();
-  var playing = true;
-  $('.audio').on('click', function(e) {
-      if (playing == false) {
-          audio.play();
-          playing = true;
+//   $('.audio').click();
+//   var playing = true;
+//   $('.audio').on('click', function(e) {
+//       if (playing == false) {
+//           audio.play();
+//           playing = true;
 
-      } else {
-          audio.pause();
-          playing = false;
-      }
-  });
+//       } else {
+//           audio.pause();
+//           playing = false;
+//       }
+//   });
   
-  //centerDemo.show();
-      $('#demo-center').show();
-      return false;
+//   //centerDemo.show();
+//       $('#demo-center').show();
+//       return false;
 });
 
 function playSound(url){   
