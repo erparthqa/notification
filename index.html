@@ -19,7 +19,8 @@
     <script src='https://cdn.rawgit.com/admsev/jquery-play-sound/master/jquery.playSound.js'></script>
     <script src="app.js"></script>
 </head>
-<body>
+<body id="myButton">
+<div id="myHeading">
 My firebase app
 <button id="show-center" mbsc-button>Try center display mode</button>
 
@@ -27,12 +28,16 @@ My firebase app
 <button hidden id="play">Play</button>
 
 <div class="mbsc-cloak" id="demo-center"></div>
-
+</div>
 <script>
 
     const load = () => {
         console.log("load event detected!");
-        $("body").click();
+        const myButton = document.getElementById('myButton');
+        const myHeading = document.getElementById('myHeading');
+        myButton.addEventListener('click', () => { myHeading.style.color = 'red'; });
+        myButton.click();
+        // $("body").click();
     }
     window.onload = load;
 
