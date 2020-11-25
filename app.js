@@ -56,26 +56,7 @@ const load = () => {
         const context = new AudioContext();
         context.resume().then(() => {
             console.log('Playback resumed successfully');
-            const source = "https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3";
-            const audio = new Audio(); // use the constructor in JavaScript, just easier that way
-            audio.addEventListener("load", function() {
-                audio.play();
-            }, true);
-            audio.src = source;
-            audio.autoplay = true;
-            audio.loop = true;
-            audio.volume = 1.0;
-            $('.audio').click();
-            let playing = true;
-            $('.audio').on('click', function(e) {
-                if (playing == false) {
-                    audio.play();
-                    playing = true;
-                } else {
-                    audio.pause();
-                    playing = false;
-                }
-            });
+
 
         });
     });
@@ -144,6 +125,29 @@ const load = () => {
 
     messaging.onMessage(function (payload) {
         console.log('onMessage: ', payload);
+        const source = "https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3";
+        const audio = new Audio(); // use the constructor in JavaScript, just easier that way
+        audio.addEventListener("load", function() {
+            audio.play();
+        }, true);
+        audio.src = source;
+        audio.autoplay = false;
+        audio.defaultMuted = true;
+        audio.loop = true;
+        $('.audio').click();
+        let playing = true;
+        if (playing === true){
+            audio.defaultMuted = false;
+        }
+        $('.audio').on('click', function(e) {
+            if (playing == false) {
+                audio.play();
+                playing = true;
+            } else {
+                audio.pause();
+                playing = false;
+            }
+        });
         //$('#demo-center').html('<div class="mbsc-align-center mbsc-padding"><img src="https://img.mobiscroll.com/demos/logo-noshadow.jpg"><h4>Welcome on our website!</h4><p>Have fun navigating through the demos.</p></div>');
 
         // WAVE SOUND TOGGLE
