@@ -72,13 +72,14 @@ const load = () => {
         console.log('onMessage: ', payload);
         const source = "https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3";
         const audio = new Audio(); // use the constructor in JavaScript, just easier that way
-        audio.addEventListener("load", function() {
-            audio.play();
-        }, true);
         audio.src = source;
         audio.autoplay = false;
         audio.defaultMuted = true;
         audio.loop = true;
+        audio.addEventListener("load", function() {
+            audio.play();
+        }, true);
+
         $('.audio').click();
         let playing = true;
         if (playing === true){
