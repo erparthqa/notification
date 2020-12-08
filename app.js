@@ -70,30 +70,65 @@ const load = () => {
 
     messaging.onMessage(function (payload) {
         console.log('onMessage: ', payload);
-        const source = "https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3";
-        const audio = new Audio(); // use the constructor in JavaScript, just easier that way
-        audio.addEventListener("load", function() {
-            audio.play();
-        }, true);
-        audio.src = source;
-        audio.autoplay = false;
-        audio.defaultMuted = true;
-        audio.loop = true;
-        $('.audio').click();
-        let playing = true;
-        if (playing === true){
-            audio.defaultMuted = false;
-        }
+        
+        var url = 'https://badasstechie.github.io/Clips/Siren.mp3';
+        window.AudioContext = window.AudioContext||window.webkitAudioContext; //fix up prefixing
+        var context = new AudioContext(); //context
+        var source ;
+        
+        function call(bool){
+            if(bool === undefined) bool = true;
 
-        $('body').on('click', '.audio',function(e) {
-            if (playing === false) {
-                audio.play();
-                playing = true;
+            if(bool === true) 
+            {
+                source = context.createBufferSource(); //source node
+                source.connect(context.destination); //connect source to speakers so we can hear it  
+
+                  var request = new XMLHttpRequest();
+                  request.open('GET', url, true); 
+                  request.responseType = 'arraybuffer'; //the  response is an array of bits
+                  request.onload = function() {
+                      context.decodeAudioData(request.response, function(response) {
+                          source.buffer = response;
+                           source.start(0); //play audio immediately
+                          source.loop = true;
+                      }, function () { console.error('The request failed.'); } );
+                  }
+                    request.send();  
             } else {
-                audio.pause();
-                playing = false;
+            source.stop(context.currentTime);
+                source.disconnect(context.destination);
+                source = null;
             }
-        });
+     }
+        setTimeout(() => {
+          call()
+        }, 4000);
+        
+//         const source = "https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3";
+//         const audio = new Audio(); // use the constructor in JavaScript, just easier that way
+//         audio.addEventListener("load", function() {
+//             audio.play();
+//         }, true);
+//         audio.src = source;
+//         audio.autoplay = false;
+//         audio.defaultMuted = true;
+//         audio.loop = true;
+//         $('.audio').click();
+//         let playing = true;
+//         if (playing === true){
+//             audio.defaultMuted = false;
+//         }
+
+//         $('body').on('click', '.audio',function(e) {
+//             if (playing === false) {
+//                 audio.play();
+//                 playing = true;
+//             } else {
+//                 audio.pause();
+//                 playing = false;
+//             }
+//         });
 
 
         //$('#demo-center').html('<div class="mbsc-align-center mbsc-padding"><img src="https://img.mobiscroll.com/demos/logo-noshadow.jpg"><h4>Welcome on our website!</h4><p>Have fun navigating through the demos.</p></div>');
